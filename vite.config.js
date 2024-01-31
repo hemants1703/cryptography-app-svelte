@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	base: process.env.NODE_ENV === 'production'
-		? '/cryptography-app-svelte/'
+		? '/cryptography-app-svelte/tree/gh-pages'
 		: "/",
 	plugins: [sveltekit()],
 });
