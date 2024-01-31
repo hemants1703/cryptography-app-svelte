@@ -48,33 +48,42 @@
 
 <div id="ceaserCipher" class="mt-[25px]">
   <h2 class="text-2xl text-white mb-[5px]">Ceaser Cipher</h2>
-  <div class="w-full">
-    <input
-      class="text-white rounded-md border-2 border-cyan-950 p-2 w-full bg-slate-800 transition-all duration-75 ease-in-out hover:border-cyan-900 active:border-cyan-900 hover:bg-slate-900 active:bg-slate-900"
-      type="text"
-      placeholder="Enter your message here"
-      bind:this={inputMessage}
-    />
-    <div class="flex justify-center items-center w-full mt-2">
+  <div class="flex gap-16 max-sm:flex-col max-sm:w-full max-sm:gap-8">
+    <div class="w-full sm:w-[50%]">
+      <input
+        class="text-white rounded-md border-2 border-cyan-950 p-2 w-full bg-slate-800 transition-all duration-75 ease-in-out hover:border-cyan-900 active:border-cyan-900 hover:bg-slate-900 active:bg-slate-900"
+        type="text"
+        placeholder="Enter your message here"
+        bind:this={inputMessage}
+      />
+      <div class="flex justify-between items-center w-full mt-2">
+        <button
+          class="flex justify-center self-center bg-cyan-950 text-white rounded-md p-3 text-center w-[33%] transition-all duration-75 ease-in-out hover:bg-cyan-900"
+          bind:this={minusButton}>-</button
+        >
+        <p class="text-white text-sm sm:w-[33%] text-center">
+          Shift: {shiftValue}
+        </p>
+        <button
+          class="bg-cyan-950 text-white rounded-md p-3 text-center w-[33%] transition-all duration-75 ease-in-out hover:bg-cyan-900"
+          bind:this={plusButton}>+</button
+        >
+      </div>
       <button
-        class="bg-cyan-950 text-white rounded-md p-3 text-center"
-        bind:this={minusButton}>-</button
-      >
-      <p class="text-white text-sm px-8">Shift: {shiftValue}</p>
-      <button
-        class="bg-cyan-950 text-white rounded-md p-3"
-        bind:this={plusButton}>+</button
+        class="flex justify-center self-center bg-cyan-950 text-white rounded-md p-2 w-full mt-2 transition-all duration-75 ease-in-out hover:bg-cyan-900"
+        bind:this={encryptButton}>Encrypt</button
       >
     </div>
-    <button
-      class="bg-cyan-950 text-white rounded-md p-2 w-full mt-2 transition-all duration-75 ease-in-out hover:bg-cyan-900"
-      bind:this={encryptButton}>Encrypt</button
+    <div
+      class="flex flex-col w-[50%] h-full bg-slate-800 rounded-md p-[10px] overflow-y-auto
+      sm:h-auto sm:w-[50%] max-sm:w-full max-sm:h-auto"
     >
-  </div>
-  <div class="flex flex-col mt-2">
-    {#if encryptedMessage.length > 0}
-      <h3 class="italic">Encrypted message</h3>
-    {/if}
-    <p>{encryptedMessage}</p>
+      <!-- {#if encryptedMessage.length > 0} -->
+      <h3 class="italic text-base font-bold text-start">Encrypted message</h3>
+      <!-- {/if} -->
+      <div class="w-full h-full">
+        {encryptedMessage}
+      </div>
+    </div>
   </div>
 </div>
