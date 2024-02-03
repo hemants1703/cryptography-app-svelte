@@ -1,30 +1,49 @@
 <script>
   import { onMount } from "svelte";
 
-  let menuIcon;
-  let navMenu;
+  export let navbarStatus;
 
   onMount(() => {
-    if (menuIcon) {
-      menuIcon.addEventListener("click", () => {
-        navMenu.classList.toggle("hidden");
-      });
+    const navbar = document.getElementById("navbar");
+    if (navbarStatus) {
+      navbar.classList.remove("sm:block");
+      navbar.classList.add("block");
+    } else {
+      navbar.classList.add("sm:block");
+      navbar.classList.remove("block");
     }
   });
 </script>
 
 <nav
-  class="sm:fixed sm:top-0 sm:bottom-0 sm:left-0 sm:right-80 text-center sm:w-[150px] sm:bg-secondary-color fixed flex"
+  id="navbar"
+  class="sm:max-w-[200px] sm:w-[200px] sm:block
+          hidden bg-cyan-950"
 >
-  <h1 class="text-5xl text-compliment-color bg-black block sm:hidden">
-    Cryptography App
-  </h1>
-  <div class="menu-icon sm:hidden" bind:this={menuIcon}>Toggle Menu</div>
-  <ul
-    class="block sm:max-sm:hidden fixed top-20 left-0 right-0 bottom-0"
-    bind:this={navMenu}
-  >
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
+  <ul class="pt-20">
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/ceaser-cipher">Ceaser Cipher</a>
+    </li>
+    <li>
+      <a href="/rail-fence-cipher">Rail Fence Cipher</a>
+    </li>
+    <li>
+      <a href="/playfair-cipher">Playfair Cipher</a>
+    </li>
   </ul>
 </nav>
+
+<style>
+  li {
+    padding: 10px 0;
+  }
+  li:hover {
+    background-color: rgb(30, 41, 59);
+  }
+  li a {
+    padding: 0 10px;
+  }
+</style>
