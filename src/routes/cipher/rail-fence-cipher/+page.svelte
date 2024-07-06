@@ -1,5 +1,5 @@
 <script>
-  import RailFenceCipher from "$lib/Ciphers/RailFenceCipher.svelte";
+  import RailFenceCipher from "$lib/ciphers/RailFenceCipher.svelte";
 </script>
 
 <svelte:head>
