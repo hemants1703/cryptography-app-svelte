@@ -1,5 +1,5 @@
 <script>
-  import PlayfairCipher from "$lib/Ciphers/PlayfairCipher.svelte";
+  import PlayfairCipher from "$lib/ciphers/PlayfairCipher.svelte";
 </script>
 
 <svelte:head>
