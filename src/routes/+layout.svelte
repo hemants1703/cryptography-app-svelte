@@ -1,61 +1,67 @@
 <script>
-  import { onMount } from "svelte";
   import "../app.css";
-  import Navbar from "../components/Navbar.svelte";
-
-  let navbarStatus = false;
-
-  onMount(() => {
-    const menuBar = document.getElementById("menuBar");
-    const path = document.querySelector("#menuBar svg path");
-    menuBar.addEventListener("click", () => {
-      if (navbarStatus)
-        path.setAttribute("d", "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5");
-      else path.setAttribute("d", "M6 18 18 6M6 6l12 12");
-      navbarStatus = !navbarStatus;
-    });
-  });
+  import {
+    navbarOpened,
+    // showCipherInformationPopup,
+  } from "$lib/stores/store.js";
+  import Navbar from "$lib/components/Navbar.svelte";
+  // import InformationPopup from "$lib/components/InformationPopup.svelte";
 </script>
 
 <div class="flex h-[100vh]">
-  <Navbar {navbarStatus} />
-  <main class="w-[100%] mt-0 max-w-screen-lg m-auto p-4">
-    <header class="flex justify-between items-center mb-8">
+  <Navbar />
+  <main class="w-[100%] mt-0 max-w-screen-lg m-auto p-4 max-sm:p-0">
+    <header
+      class="flex justify-between items-center mb-8 max-sm:bg-cyan-950 max-sm:p-4"
+    >
       <h1
-        class="sm:text-5xl text-3xl text-compliment-color block sm:max-sm:hidden"
+        class="max-sm:relative sm:text-5xl text-3xl max-sm:text-4xl font-bold text-compliment-color block z-50"
       >
-        Cryptography App
+        <a href="/"> Cryptography App </a>
       </h1>
-      <div id="menuBar" class="sm:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-9 h-9"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
-      </div>
+      <button
+        class="sm:hidden z-50"
+        on:click={() => {
+          navbarOpened.update((value) => !value);
+        }}
+        aria-label="Toggle Navbar"
+      >
+        {#if $navbarOpened}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-10"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        {:else}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-10"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        {/if}
+      </button>
+      <!-- <InformationPopup /> -->
     </header>
-    <slot />
+    <div class="max-sm:px-4 max-sm:text-xl">
+      <slot />
+    </div>
   </main>
 </div>
-
-<style>
-  :global(h2) {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    color: white;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  :global(#aboutCipher) {
-    margin-top: 20px;
-  }
-</style>

@@ -1,3 +1,7 @@
+<script>
+  import PlayfairCipher from "$lib/Ciphers/PlayfairCipher.svelte";
+</script>
+
 <svelte:head>
   <title>Playfair Cipher | Cryptography App</title>
   <meta
@@ -11,12 +15,7 @@
   <meta name="author" content="Hemant Sharma" />
 </svelte:head>
 
-<div id="playfairCipher">
-  <h2>Playfair Cipher</h2>
-  <i>This cipher is currently under development</i>
-  <p id="aboutCipher">
-    The Playfair cipher is a digraph substitution cipher that encrypts a message
-    by dividing the plaintext into pairs of letters and then encrypting each
-    pair using a key matrix.
-  </p>
+<div>
+  <i class="text-yellow-500">This cipher is currently under development</i>
+  <PlayfairCipher />
 </div>
