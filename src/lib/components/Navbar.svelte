@@ -14,7 +14,7 @@
 </script>
 
 <nav
-  class={`sm:w-[230px] sm:block max-sm:${$navbarOpened ? "block" : "hidden"} max-sm:fixed max-sm:inset-0 bg-cyan-950`}
+  class={`sm:w-[230px] sm:block ${$navbarOpened ? "block" : "hidden"} max-sm:fixed max-sm:inset-0 bg-cyan-950`}
 >
   <div class="flex flex-col justify-between h-full pt-20">
     <div class="flex flex-col">
