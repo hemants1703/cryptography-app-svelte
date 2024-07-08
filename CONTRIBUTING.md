@@ -7,8 +7,8 @@ We welcome contributions from the community and are happy to have them. Please f
 The project is organized as follows:
 
 - `src/routes` contains the main pages of the app
-- `src/routes/[route]` contains the components for each page and the logic for each cipher itself
-- each component starts with its unique `id` name (e.g. `id="ceaserCipher"`, `id="railFenceCipher"`, `id="playfairCipher"`) in a div and the heading of each component is the name of the cipher itself in an `h2` tag
+- `src/routes/cipher/[route]` the slug `[route]` represents different pages for the ciphers that are mentioned in the `README.md` file
+- each cipher is a component present in the `src/lib/ciphers` route and is brought in the `+page.svelte` file for each `src/routes/cipher/[route]` of the cipher routes and are placed appropriately just as a single component whereas for each sub-route within the `cipher` route, there is a +layout.svelte present that gives the initial layout to the routes after `cipher` that is the cipher alogrithm.
 
 ## Reporting Issues
 
@@ -32,5 +32,5 @@ If you want to contribute to the codebase, please follow these steps:
 ## General Guidelines
 
 1. If you have any questions, feel free to ask in the PR
-2.  If you want to contribute to the documentation, please feel free to do so
-3.  Please be respectful to other contributors and maintainers
+2. If you want to contribute to the documentation, please feel free to do so
+3. Please be respectful to other contributors and maintainers
